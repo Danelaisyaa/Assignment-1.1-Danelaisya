@@ -3,157 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tax Consultant Profile & Services</title>
+    <title>PT LYSA ALTERA - Tax & Financial Consulting</title>
     
     <style>
-        /* 1. Body Styling & Lighter Background */
+        /* 1. Global Reset & Smooth Scroll */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
         body {
-            background-color: #f4f6f9;
-            color: #2c3e50;
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            background: linear-gradient(rgba(74, 102, 168, 0.85), rgba(15, 23, 42, 0.85)), 
+                        url('assets/images/office_building.png') center/cover no-repeat fixed;
+            color: #334155;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
         }
 
-        /* 2. Centered Logo Image */
-        .header-logo {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 120px;
-            border-radius: 8px;
+        /* 2. Main Glassmorphism Wrapper */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        /* 3. Main Title (Centered & Custom Color) */
-        .main-title {
-            text-align: center;
-            color: #1b4f72;
-            font-size: 28px;
-            margin-top: 10px;
-        }
+        /* 3. Header Section */
+        .header { text-align: center; }
+        .header-logo { width: 300px; height: auto; border-radius: 8px; margin-bottom: 4px; }
+        .main-title { color: #0f172a; font-size: 30px; font-weight: 700; margin-top: 0; }
+        .tagline { color: #475569; font-style: italic; font-size: 15px; margin-top: 4px; }
+        hr { border: 0; height: 1px; background: #cbd5e1; margin: 30px 0; }
+        
+        /* 4. Section Titles */
+        h2 { font-size: 24px; margin-bottom: 14px; }
+        .title-profile { color: #991b1b; }
+        .title-services { color: #166534; }
+        .title-why { color: #1e40af; }
+        .title-contact { color: #9a3412; }
 
-        .tagline {
-            text-align: center;
-            color: #5d6d7e;
-        }
-
-        /* 4. Section Headings (Custom Styling) */
-        .section-title-profile {
-            color: #b03a2e;
-            border-bottom: 2px solid #b03a2e;
-            padding-bottom: 5px;
-        }
-
-        .section-title-services {
-            color: #1e8449;
-        }
-
-        .section-title-contact {
-            color: #d35400;
-        }
-
-        /* 5. Custom Styled Form Box */
-        .consultation-form {
-            background-color: #ffffff;
-            border: 1px solid #d5dbdb;
-            border-radius: 8px;
-            padding: 20px;
-            max-width: 400px;
-            margin: 20px 0;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .form-group input {
+        /* 5. Image Container & Hover Effects */
+        .img-container { text-align: center; margin: 25px 0; }
+        .office-img {
             width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            max-width: 600px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        .office-img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        /* 6. Typography & Lists */
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 0 0 18px 20px; }
+        li { margin-bottom: 6px; }
+
+        /* 7. Service Pricing Table */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .pricing-table th {
+            background-color: rgba(74, 102, 168, 0.85);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        .pricing-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #cbd5e1;
+        }
+        .pricing-table tr:nth-child(even) { background-color: #f8fafc; }
+
+        /* 8. Interactive Form */
+        .consultation-form {
+            background: #f1f5f9;
+            border-left: 5px solid #1e40af;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 25px 0;
+        }
+        .consultation-form h3 { color: #1e3a8a; margin-bottom: 8px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; }
+        .form-group input {
+            width: 100%; padding: 10px 12px;
+            border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; outline: none;
+        }
+        .form-group input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
 
         .submit-btn {
-            background-color: #1b4f72;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+            background: #1e40af; color: white; padding: 10px 20px;
+            border: none; border-radius: 6px; font-weight: bold; cursor: pointer;
+            transition: background 0.2s ease;
         }
+        .submit-btn:hover { background: #1e3a8a; }
 
-        .submit-btn:hover {
-            background-color: #154360;
+        /* 9. Contact Buttons & Info Box */
+        .info-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0 15px 0;
         }
+        .contact-group { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+        .contact-btn {
+            display: inline-flex; align-items: center; gap: 12px; padding: 12px 18px;
+            background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px;
+            color: #1e293b; text-decoration: none; font-weight: 600; transition: all 0.2s ease;
+        }
+        .contact-btn:hover { background: #e2e8f0; color: #1e40af; border-color: #94a3b8; }
+        a.ext-link { color: #2563eb; text-decoration: none; font-weight: 600; }
+        a.ext-link:hover { text-decoration: underline; }
 
-        /* 6. List Styling */
-        .services-list li {
-            color: #4a235a;
-            margin-bottom: 6px;
+        /* 10. Footer */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #cbd5e1;
+            font-size: 13px;
+            color: #64748b;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section with Centered Logo & Title -->
-    <img src="assets/images/consultant_logo.png" alt="Tax Consultant Logo" class="header-logo">
-    <h1 class="main-title">Salma & Associates Tax Consulting</h1>
-    <p class="tagline"><em>Your Trusted Partner for Financial Efficiency & Tax Compliance</em></p>
+    <div class="container">
+        
+        <!-- HEADER SECTION -->
+        <header class="header">
+            <img src="assets/images/LOGO2_TAX.png" alt="PT LYSA ALTERA Logo" class="header-logo">
+            <h1 class="main-title">PT LYSA ALTERA</h1>
+            <p class="tagline">Strategic Financial Solutions & Premier Tax Advisory</p>
+        </header>
 
-    <hr> <!-- Separator 1 -->
+        <hr>
 
-    <!-- Section 1: Office Profile -->
-    <h2 class="section-title-profile">Office Profile</h2>
-    <p>We are a professional tax consulting firm dedicated to assisting corporations and individual clients in managing their tax obligations with high <strong>efficiency</strong> and absolute legal <strong>accuracy</strong>.</p>
-    
-    <p>Our mission is to minimize client compliance risks through strategic planning, reliable accounting integration, and meticulous oversight.</p>
-    
-    <p>Our vision is to become a leading accounting and tax advisory standard for growing businesses across Indonesia.</p>
-
-    <hr> <!-- Separator 2 -->
-
-    <!-- Section 2: Services & Workflow -->
-    <h2 class="section-title-services">Our Core Services</h2>
-    <ul class="services-list">
-        <li><strong>Corporate & Individual Income Tax:</strong> Annual and monthly tax filing services.</li>
-        <li><strong>VAT & Tax Invoice Management:</strong> Accurate administration of Value Added Tax.</li>
-        <li><strong>Tax Audit Advisory:</strong> Expert advocacy during official tax examinations.</li>
-    </ul>
-
-    <h3>3-Step Consultation Process</h3>
-    <ol>
-        <li>Initial appointment and preliminary discussion.</li>
-        <li>Financial document review and legal analysis.</li>
-        <li>Strategy formulation and official submission.</li>
-    </ol>
-
-    <!-- Name Input Form (Added Feature) -->
-    <div class="consultation-form">
-        <h3>Request a Callback</h3>
-        <form>
-            <div class="form-group">
-                <label for="client-name">Your Full Name:</label>
-                <input type="text" id="client-name" name="client_name" placeholder="Enter your name here..." required>
+        <!-- PART 1: PROFILE SECTION -->
+        <section>
+            <h2 class="title-profile">Office Profile</h2>
+            <p><strong>PT LYSA ALTERA</strong> is a professional tax consulting and financial advisory firm dedicated to assisting corporate entities and individual clients in managing their tax obligations with top-tier <strong>efficiency</strong> and legal <strong>accuracy</strong>.</p>
+            
+            <div class="img-container">
+                <img src="assets/images/OFFICE2 TAX.jpeg" alt="PT LYSA ALTERA Reception" class="office-img">
             </div>
-            <button type="submit" class="submit-btn">Submit Request</button>
-        </form>
+
+            <p><strong>Our Vision:</strong> To become a leading strategic partner in Indonesia for transparent, reliable, and corporate-grade tax and accounting advisory services.</p>
+            
+            <p><strong>Our Mission:</strong></p>
+            <ul>
+                <li>Provide strategic tax planning to minimize compliance risks for our clients.</li>
+                <li>Integrate robust financial accounting standards with meticulous legal oversight.</li>
+                <li>Offer expert advocacy during tax audits and official compliance reviews.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <!-- PART 2: SERVICES, PRICING & FORM -->
+        <section>
+            <h2 class="title-services">Our Core Services</h2>
+            <ul>
+                <li><strong>Corporate & Individual Income Tax:</strong> Monthly compliance and annual tax filing services.</li>
+                <li><strong>VAT & Tax Invoice Management:</strong> Precision administration of Value Added Tax processing.</li>
+                <li><strong>Tax Audit Advisory:</strong> Professional legal representation and advocacy during tax examinations.</li>
+            </ul>
+
+            <!-- ESTIMATED PRICING TABLE -->
+            <h3 style="margin: 20px 0 10px 0; color: #0f172a;">Service Fee Estimation</h3>
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th style="border-radius: 6px 0 0 0;">Service Type</th>
+                        <th>Target Client</th>
+                        <th style="border-radius: 0 6px 0 0;">Starting From</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Individual Tax Filing (SPT Tahunan)</td>
+                        <td>Personal / Expatriates</td>
+                        <td><strong>IDR 1,500,000</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Corporate Tax Advisory</td>
+                        <td>SMEs & Corporations</td>
+                        <td><strong>IDR 5,000,000</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Tax Audit Advocacy</td>
+                        <td>Enterprise Clients</td>
+                        <td><strong>Custom Quote</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="margin: 20px 0 10px 0; color: #0f172a;">3-Step Consultation Process</h3>
+            <ol>
+                <li>Initial appointment and preliminary discussion.</li>
+                <li>Financial document review and legal analysis.</li>
+                <li>Strategy formulation and official submission.</li>
+            </ol>
+
+            <!-- INTERACTIVE FORM -->
+            <div class="consultation-form">
+                <h3>Request a Callback</h3>
+                <p style="font-size: 13px; color: #64748b; margin-bottom: 12px;">Fill in your details below to schedule a consultation with our team:</p>
+                <form onsubmit="handleCallbackSubmit(event)">
+                    <div class="form-group">
+                        <label for="client-name">Your Full Name:</label>
+                        <input type="text" id="client-name" name="client_name" placeholder="Enter your full name here..." required>
+                    </div>
+                    <button type="submit" class="submit-btn">📞 Request Callback</button>
+                </form>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- PART 3: WHY CHOOSE US & GALLERY -->
+        <section>
+            <h2 class="title-why">Why Choose Us?</h2>
+            <p>We combine deep regulatory insight with practical execution to safeguard your company's financial growth.</p>
+
+            <div class="img-container">
+                <img src="assets/images/OFFICE TAX.jpeg" alt="PT LYSA ALTERA Headquarters" class="office-img">
+                <p style="font-size: 13px; color: #64748b; margin-top: 6px;"><em>PT LYSA ALTERA Headquarters</em></p>
+            </div>
+
+            <p>For official regulations, visit the <a href="https://www.pajak.go.id" target="_blank" class="ext-link">Directorate General of Taxes (DJP) Website</a> or read updates on the <a href="https://www.kemenkeu.go.id" target="_blank" class="ext-link">Ministry of Finance Portal</a>.</p>
+        </section>
+
+        <hr>
+
+        <!-- PART 4: CONTACT & OPERATIONAL INFO -->
+        <section>
+            <h2 class="title-contact">Contact Us</h2>
+            <p>Need immediate professional tax guidance? Get in touch with us directly:</p>
+
+            <div class="info-box">
+                <p style="margin-bottom: 6px;"><strong>📍 Office Location:</strong> Financial Center Tower, 12th Floor, Jakarta, Indonesia</p>
+                <p style="margin-bottom: 0;"><strong>⏰ Operating Hours:</strong> Monday – Friday: 08:30 AM – 05:00 PM (WIB)</p>
+            </div>
+
+            <div class="contact-group">
+                <a href="mailto:danelaisya11@gmail.com" class="contact-btn">
+                    ✉️ <span>Email Consultant: danelaisya11@gmail.com</span>
+                </a>
+                <a href="tel:+628123456789" class="contact-btn">
+                    📞 <span>Direct Call: +62 812-3456-789</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>&copy; 2026 PT LYSA ALTERA. All Rights Reserved | Strategic Tax & Financial Advisory Services</p>
+        </footer>
+
     </div>
 
-    <hr> <!-- Separator 3 -->
-
-    <!-- Section 3: Links & Contact -->
-    <h2 class="section-title-contact">External Resources & Contact Information</h2>
-    <p>For official tax regulations, visit the <a href="https://www.pajak.go.id" target="_blank">Directorate General of Taxes (DJP) Website</a> or review updates on the <a href="https://www.kemenkeu.go.id" target="_blank">Ministry of Finance Portal</a>.</p>
-
-    <p>Get in touch with us:</p>
-    <p>Email: <a href="mailto:danelaisya11@gmail.com">Email Our Consultant</a></p>
-    <p>Phone: <a href="tel:+628123456789">+62 812-3456-789</a></p>
+    <!-- POP-UP -->
+    <script>
+        function handleCallbackSubmit(event) {
+            event.preventDefault(); 
+            const clientName = document.getElementById('client-name').value;
+            alert("Thank you, " + clientName + "!\nYour callback request has been received. Our tax advisory team at PT LYSA ALTERA will contact you shortly.");
+            document.getElementById('client-name').value = '';
+        }
+    </script>
 
 </body>
 </html>
